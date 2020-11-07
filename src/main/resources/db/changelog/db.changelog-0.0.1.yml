@@ -1,0 +1,5 @@
+databaseChangeLog:
+- include:
+    file: db/animal/schema/animal-0.0.1.yml
+- include:
+    file: db/animal/data/animal-0.0.1.yml

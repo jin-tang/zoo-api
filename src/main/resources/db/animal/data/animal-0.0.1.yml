@@ -1,0 +1,11 @@
+databaseChangeLog:
+  - changeSet:
+      id: 2-add-animal-data
+      author: emiller
+      changes:
+        - sql: |
+            INSERT INTO ANIMAL (ANIMAL_KEY, ANIMAL_NAME, ANIMAL_AGE, ANIMAL_BREED, ANIMAL_TYPE)
+              VALUES (NEXT VALUE FOR ANIMAL_SEQUENCE, 'Terry', 5, 'Alligator', 'REPTILE');
+
+            INSERT INTO ANIMAL (ANIMAL_KEY, ANIMAL_NAME, ANIMAL_AGE, ANIMAL_BREED, ANIMAL_TYPE)
+              VALUES (NEXT VALUE FOR ANIMAL_SEQUENCE, 'Debbie', 1, 'Butterfly', 'INSECT');

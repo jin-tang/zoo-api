@@ -1,0 +1,19 @@
+databaseChangeLog:
+  - changeSet:
+      id: 1-add-animal-schema
+      author: emiller
+      changes:
+        - sql: |
+            CREATE TABLE ANIMAL
+            (
+              ANIMAL_KEY BIGINT NOT NULL,
+              ANIMAL_NAME VARCHAR(80) NOT NULL,
+              ANIMAL_AGE BIGINT NOT NULL,
+              ANIMAL_BREED VARCHAR(80) NOT NULL,
+              ANIMAL_TYPE VARCHAR(40) NOT NULL,
+              PRIMARY KEY (ANIMAL_KEY)
+            );
+
+            CREATE SEQUENCE ANIMAL_SEQUENCE
+              START WITH 1
+              INCREMENT BY 50;
