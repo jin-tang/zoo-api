@@ -20,20 +20,17 @@ public class AnimalService {
         return animalRepository.findById(animalKey);
     }
 
-    public AnimalDto createAnimal(AnimalDto animalDto) {
+    public Animal createAnimal(AnimalDto animalDto) {
         var animal = animalMappingService.buildAnimal(animalDto);
-        animalRepository.save(animal);
-        return animalMappingService.buildAnimalDto(animal);
+        return animalRepository.save(animal);
     }
 
-    public AnimalDto updateAnimal(AnimalDto animalDto) {
+    public Animal updateAnimal(AnimalDto animalDto) {
         var animal = animalMappingService.buildAnimal(animalDto);
-        animalRepository.save(animal);
-        return animalMappingService.buildAnimalDto(animal);
+        return animalRepository.save(animal);
     }
 
-    public void deleteAnimal(AnimalDto animalDto) {
-        var animal = animalMappingService.buildAnimal(animalDto);
+    public void deleteAnimal(Animal animal) {
         animalRepository.delete(animal);
     }
 }
