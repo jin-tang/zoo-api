@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class AnimalMappingService {
 
-    public AnimalDto buildAnimalDto(Animal animal) {
+    public static AnimalDto buildAnimalDto(Animal animal) {
         return AnimalDto.builder()
                 .key(animal.getKey())
                 .name(animal.getName())
@@ -17,8 +17,8 @@ public class AnimalMappingService {
                 .build();
     }
 
-    public Animal buildAnimal(AnimalDto animalDto) {
-        var animal = new Animal();
+    public static Animal buildAnimal(AnimalDto animalDto) {
+        Animal animal = new Animal();
         animal.setKey(animalDto.getKey());
         animal.setName(animalDto.getName());
         animal.setAge(animalDto.getAge());
