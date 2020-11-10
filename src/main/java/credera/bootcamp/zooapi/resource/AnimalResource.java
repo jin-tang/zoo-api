@@ -79,9 +79,15 @@ public class AnimalResource {
                         HttpStatus.NOT_FOUND,
                         "Did not find animal with key: " + animalKey
                 ));
-        Animal animal = animalService.updateAnimal(animalDto);
-        AnimalDto dto = buildAnimalDto(animal);
-        return ResponseEntity.ok().body(dto);
+        try {
+            Animal animal = animalService.updateAnimal(animalDto);
+            AnimalDto dto = buildAnimalDto(animal);
+            return ResponseEntity.ok().body(dto);
+        } catch (Exception e) {
+            throw new ResponseStatusException(
+                    HttpStatus.BAD_REQUEST,
+                    "Cannot contain special characters or numbers: " + animalDto.getBreed());
+        }
     }
 
     @DeleteMapping("/{animalKey}")

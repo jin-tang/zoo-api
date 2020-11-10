@@ -14,6 +14,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -55,7 +57,12 @@ public class AnimalService {
     }
 
     @Transactional
-    public Animal updateAnimal(AnimalDto animalDto) {
+    public Animal updateAnimal(AnimalDto animalDto) throws Exception {
+        Pattern regex = Pattern.compile("[^A-Za-z]");
+        Matcher match = regex.matcher(animalDto.getBreed());
+        if(!match.matches()) {
+            throw new Exception("No special characters or numbers allow");
+        }
         Animal animal = buildAnimal(animalDto);
         return animalRepository.save(animal);
     }
