@@ -10,4 +10,9 @@ class ZooApiApplicationTests {
     void contextLoads() {
     }
 
+    @Test
+    void createAnimalTest() {
+
+    }
+
 }

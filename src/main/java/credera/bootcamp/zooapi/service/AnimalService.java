@@ -58,9 +58,9 @@ public class AnimalService {
 
     @Transactional
     public Animal updateAnimal(AnimalDto animalDto) throws Exception {
-        Pattern regex = Pattern.compile("[^A-Za-z]");
+        Pattern regex = Pattern.compile("^[A-Za-z]+$");
         Matcher match = regex.matcher(animalDto.getBreed());
-        if(!match.matches()) {
+        if(match.matches()) {
             throw new Exception("No special characters or numbers allow");
         }
         Animal animal = buildAnimal(animalDto);
